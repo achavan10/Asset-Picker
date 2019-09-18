@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <form class="input-group" style="margin:auto;">
+        <div class="mt-4 mb-2 mr-2">
+          <select class="form-control" [ngModel]="selectedValue" name="dropdown" (ngModelChange)="onChange($event)">
+            <option *ngFor="let app of application" [ngValue]="app">{{app}}</option>
+          </select>
+        </div>
+        <input type="text" #assetSearchInput class="form-control mt-4 mb-2 mr-2" placeholder="Search..." />
+        <button type="button" class="btn btn-md btn-primary input-group-btn mt-4 mb-2"
+          (click)="searchAsset(assetSearchInput.value)">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="isSearching">
+    <div class="col-12 text-center">
+      <h4>Searching ... </h4>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!isSearching">
+    <div class="col-md-4 col-lg-4 mb-2 mt-2" *ngFor="let asset of data?.content; let index = index;">
+      <div class="img-thumbnail" (click)="select($event, asset)">
+        <div>
+          <img src="{{imgBaseUrl + asset.metadata.resourceUrl}}" class="img-fluid rounded img-details" />
+          <button class="btn" *ngIf="asset.selected"><i class="fa fa-check"></i></button>
+          <!--src="{{movie['Poster']}}"-->
+          <p class="ml-1 mb-1 mr-1">
+            <span><b>{{asset['@type']}}</b></span>
+            <span class="float-right"><i>{{asset.createdDate | date}}</i></span>
+          </p>
+          <p class="ml-1 mb-0"><i>{{asset.description}}</i></p>
+          <div class="dropdown-divider"></div>
+          <h6 class="ml-1 mb-2"><b>{{asset.title}}</b></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

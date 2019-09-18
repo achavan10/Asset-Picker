@@ -1,0 +1,39 @@
+.img-details {
+  height: 250px;
+  width: 100%;
+}
+
+.img-thumbnail {
+  margin: 0.2rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.img-thumbnail p {
+  font-size: 13px;
+  color: black;
+}
+
+.img-thumbnail h6 {
+  font-size: 15px;
+  color: black;
+}
+
+.check {
+  border: 2px solid #f58723;
+  padding: 0.6rem;
+}
+
+.img-thumbnail .btn {
+  position: absolute;
+  top: -3%;
+  left: -4%;
+  background-color: #f58723;
+  color: white;
+  font-size: 15px;
+  padding: 5px 10px;
+  border: none;
+  cursor: default;
+  border-radius: 50%;
+  text-align: center;
+}
